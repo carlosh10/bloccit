@@ -10,11 +10,11 @@ require 'faker'
 
 #create posts
 50.times do 
-  title = Faker::Lorem.sentence
+  @title = Faker::Lorem.sentence
   Post.create!(
-    title: title,
+    title: @title,
     body: Faker::Lorem.paragraph
-  ) unless  Post.where(title: title).first
+  ) unless  Post.where(title: @title).first
 end
 posts = Post.all
 
@@ -24,7 +24,7 @@ posts = Post.all
   Comment.create!(
     post: posts.sample,
     body: Faker::Lorem.paragraph
-  ) unless Comment.post.exists?
+  ) 
 end
 
 puts "Seed finished"
