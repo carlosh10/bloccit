@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   
 
-  before_action :flash_attack
+  before_action :flash_attack, except: [:index,]
+  skip_before_action :flash_attack, only: [:index, :show]
 
   def index
     @posts = Post.all
@@ -35,6 +36,7 @@ class PostsController < ApplicationController
   end
 
    def update
+    flash_attack
      @post = Post.find(params[:id])
      authorize @post
      if @post.update_attributes(params.require(:post).permit(:title, :body))
