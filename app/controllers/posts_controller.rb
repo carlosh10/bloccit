@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   
 
-  before_action :flash_attack, except: [:index,]
-  skip_before_action :flash_attack, only: [:index, :show]
 
   def index
     @posts = Post.all
