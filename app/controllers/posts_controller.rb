@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   
 
-  before_action :flash_attack
 
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    #@posts = policy_scope(Post)
+    @posts = PostPolicy::Scope.new(current_user, Post).resolve
     authorize @posts
   end
 
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
 
   def create
      @post = current_user.posts.build(params.require(:post).permit(:title, :body))
-    authorize @post
+        authorize @post
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to @post
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
 
    def update
      @post = Post.find(params[:id])
-     authorize @post
+       authorize @post
      if @post.update_attributes(params.require(:post).permit(:title, :body))
        flash[:notice] = "Post was updated."
        redirect_to @post
@@ -46,11 +47,6 @@ class PostsController < ApplicationController
      end
    end
 
-  protected
-
-  def flash_attack
-    flash[:test] = "I am flash on the post controller"
-  end
 
 
 end
