@@ -1,0 +1,12 @@
+<h1>All Summaries</h1> 
+<% @summaries.each do |summary| %> 
+
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to summary.title, summary%>
+    </h4>
+  </div>
+</div>
+
+<% end %>
