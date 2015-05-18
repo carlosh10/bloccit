@@ -26,7 +26,8 @@ class PostsController < ApplicationController
         authorize @post
     if @post.save
       flash[:notice] = "Post was saved."
-      redirect_to @post
+      #redirect_to @post
+       render :show
     else
        flash[:error] = "There was an error saving the post. Please try again."
        render :new
