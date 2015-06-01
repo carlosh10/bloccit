@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
-  def flash_attack
-    flash[:test] = "I am flash on the post controller"
-  end
+  # def flash_attack
+  #   flash[:test] = "I am flash on the post controller"
+  # end
 end
