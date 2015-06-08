@@ -16,5 +16,14 @@
     <% end %>
   </div>
 </div>
- 
-<!-- <p><%= @post.body %></p> -->
+
+<% if current_user %>
+  <ul>
+
+  <%= render partial: "comments/comment", collection: @post.comments %>
+
+  </ul>
+
+ <%= render partial: "comments/form", locals: {post: @post, topic: @topic} %>
+
+ <% end %>

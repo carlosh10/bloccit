@@ -53,6 +53,8 @@ end
 group :development do
   gem 'sqlite3'
   gem 'rails-erd'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 gem 'pry-rails', :group => :development
