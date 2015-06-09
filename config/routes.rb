@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 # testar pra ver se funciona esse nesting
   resources :topics do
     resources :posts, except: [:index] do
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
     authorize @topic
   end
 
-def create
+  def create
      @topic = Topic.new(params.require(:topic).permit(:name, :description, :public))
      authorize @topic
      if @topic.save
@@ -29,7 +29,20 @@ def create
        flash[:error] = "Error creating topic. Please try again."
        render :new
      end
-   end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+
+    authorize @topic
+    if @topic.destroy
+      flash[:notice] = "\"#{@topic.name}\"was deleted successfully"
+      redirect_to topics_path
+    else
+      flash[:error] = "There was an error deleting the topic"
+      render :show
+    end
+  end
  
    def update
      @topic = Topic.find(params[:id])
