@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   resources :advertisements, :comments, :questions
   resources :users, only: [:update]
 
-# testar pra ver se funciona esse nesting
-  resources :topics do
-    resources :posts, except: [:index] do
-      resources :comments, only: [:create, :destroy]
-    end
+  # resources :topics do
+  #   resources :posts, except: [:index] do
+  #     resources :comments, only: [:create, :destroy]
+  #   end
+  # end
+
+  resources :topics do  
+    resources :posts, except: [:index]
+  end
+
+  resources :posts, only: [] do
+    resources :comments, only: [:create, :destroy]
   end
 
 
