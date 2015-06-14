@@ -86,7 +86,7 @@ questions = Question.all
  # Create a moderator
  moderator = User.new(
    name:     'Moderator User',
-   email:    'moderator@example.com',
+   email:    'carlos@comex.guru',
    password: 'helloworld',
    role:     'moderator'
  )
