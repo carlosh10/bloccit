@@ -30,12 +30,15 @@ topics = Topic.all
 #create posts
 50.times do 
   @title = Faker::Lorem.sentence
-  Post.create!(
+  post = Post.create!(
     user: users.sample,
     topic: topics.sample,
     title: @title,
     body: Faker::Lorem.paragraph
-  ) unless  Post.where(title: @title).first
+  ) 
+  #unless  Post.where(title: @title).first
+  post.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
+  post.update_rank
 end
 posts = Post.all
 
