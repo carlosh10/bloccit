@@ -25,6 +25,7 @@ class PostsController < ApplicationController
      @post = current_user.posts.build(post_params)
         authorize @post
     if @post.save
+      @post.create_vote
       flash[:notice] = "Post was saved."
       #redirect_to @post
        render :show
@@ -67,7 +68,6 @@ class PostsController < ApplicationController
      end
    end
 
-   after_create :create_vote
 
    private
 
@@ -75,8 +75,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :image)
    end
 
-   def create_vote
-     #use user.votes.create, and set the post association to equal self, and the value to equal 1.
-   end
 
 end

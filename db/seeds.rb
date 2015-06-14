@@ -38,6 +38,7 @@ topics = Topic.all
   ) 
   #unless  Post.where(title: @title).first
   post.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
+  post.create_vote
   post.update_rank
 end
 posts = Post.all
