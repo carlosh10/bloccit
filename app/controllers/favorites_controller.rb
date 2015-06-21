@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
     # Get the post from the params
      post = Post.find(params[:post_id])
     # Find the current user's favorite with the ID in the params
-     favorite = current_user.favorites.build(post: post)
+     favorite = current_user.favorites.find_by(post_id: params[:post_id])
      authorize favorite
 
    if favorite.destroy
