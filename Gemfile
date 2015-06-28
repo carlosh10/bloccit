@@ -24,6 +24,8 @@ gem 'devise'
 gem 'figaro', '1.0'
 gem 'pundit'
 gem 'newrelic_rpm'
+gem 'factory_girl_rails', '~> 4.0'
+
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
