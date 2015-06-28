@@ -34,12 +34,12 @@
 </div>
 
 <% if current_user %>
-  <ul>
 
+ <h2>Comments</h2>
+ <div class='js-comments'>
   <%= render partial: "comments/comment", collection: @comments %>
-
-  </ul>
-
+ </div>
+ <div class='new-comment'>
  <%= render partial: "comments/form", locals: {post: @post, topic: @topic} %>
-
+</div>
  <% end %>
